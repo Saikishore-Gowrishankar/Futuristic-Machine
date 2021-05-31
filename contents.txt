@@ -1,0 +1,82 @@
+
+camera {
+   location <-4, 5, -5>
+   angle 90
+   look_at <0,0,0>
+}
+
+light_source{ <1500,2500,-2500>
+              color rgb<1,1,1> }
+              
+light_source{ <1500,1500,2500>
+              color rgb<1,1,1> } 
+              
+              
+sky_sphere{ pigment{color rgb<0.7,0.7,0.9>}}  
+
+/*
+// Simple gear script taken from http://news.povray.org/povray.general/message/%3C4850e1b2%241%40news.povray.org%3E/#%3C4850e1b2%241%40news.povray.org%3E
+#declare nTeeth = 10;
+#declare PCD=nTeeth*.221875;
+union
+{
+	cylinder{<0, 0, -.5>, <0, 0,p .5>, PCD-.65}
+	#local rz=0;
+	#while(rz<360)
+		intersection
+		{
+			intersection
+			{
+				cylinder{<0, 0, -.5>, <0, 0, .5>, 1 translate<0, -.5, 0>}
+				cylinder{<0, 0, -.5001>, <0, 0, .5001>, 1 translate<0, .5, 0>}
+				scale<1.25, 1, 1>
+				translate<PCD-.65, 0, 0>
+				rotate <0, 0, rz>
+			}
+			difference
+			o{
+				cylinder{<0, 0, -.5002>, <0, 0, .5002>, PCD+.3}
+				cylinder{<0, 0, -.5003>, <0, 0, .5003>, PCD-1.1}
+			}
+		}
+		#local rz=rz+(360/nTeeth);
+	#end
+}
+*/ 
+
+
+// clock face     
+/*
+cylinder { <0, 0, 0>, <0, 0.1, 0>, 4
+    rotate <90, 0, 0>
+    pigment
+    { 
+      image_map
+      { 
+        png "img.png"
+        map_type 0
+        once      
+      } 
+      scale<8,8,1>
+      translate<-4,-4,0>
+    }
+                 
+}   */
+   
+// simple hammer thing
+union {
+    cylinder{ <0, 0, 0>, <0, 4.5, 0>, 0.4 
+        texture { 
+            pigment{ rgb<0.8,0.7,0.6> }
+            finish { diffuse 0.9 phong 1}
+        }
+    } 
+    cylinder{ <0, 0, 0>, <0, 4, 0>, 1.5  
+    rotate<90,0,0>
+    translate<0,5,-2>
+    texture { 
+        pigment{ rgb<0, 0, 0.8> }
+        finish { diffuse 0.9 phong 1} 
+        }
+    }
+}
